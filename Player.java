@@ -6,6 +6,9 @@
 
 
 public class Player {
+    Deck deck = new Deck();
+    int compValue = deck.getCompValue();
+    int playerValue = deck.getPlayerValue();
     private String name;
     private int playersCard;
 
@@ -22,4 +25,5 @@ public class Player {
         playersCard = player;
 
     }
+
 }
