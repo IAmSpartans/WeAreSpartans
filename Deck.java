@@ -1,4 +1,3 @@
-
 /* Deck for BlackJack
  * Matthew W. Gavin R. Caleb
  * 4 April 2021
@@ -21,10 +20,6 @@ public class Deck {
 
         int generateCard3 = random.nextInt(13);
 
-        int generateSuit4 = random.nextInt(4);
-
-        int generateCard4 = random.nextInt(13);
-
 
         //generates two cards randomly for each player
 
@@ -37,12 +32,9 @@ public class Deck {
         String playerCard1 = value[generateCard3] + card[generateSuit3];
         //shown player value
 
-        String playerCard2Hidden = value[generateCard4] + card[generateSuit4];
-        //hidden player value
 
 
         int playerValue = 0;
-        int playerValueHidden = 0;
 
         int aceChoice;
         switch (playerCard1) {
@@ -80,47 +72,11 @@ public class Deck {
             //this is one of the players cards;
             // this will help determine if the computer chooses more that 21;
         }
-        switch (playerCard2Hidden) {
-            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
-                aceChoice = scanner.nextInt();
-                if (aceChoice == 1) {
 
-                    playerValueHidden = 1;
 
-                } else if (aceChoice == 11) {
+        System.out.println("your new card is the " + playerCard1);
 
-                    playerValueHidden = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
-
-                }
-            }
-            case "2 of Spades", "2 of Diamonds", "2 of Clubs", "2 of Hearts" -> playerValueHidden = 2;
-            case "3 of Spades", "3 of Diamonds", "3 of Clubs", "3 of Hearts" -> playerValueHidden = 3;
-            case "4 of Spades", "4 of Diamonds", "4 of Clubs", "4 of Hearts" -> playerValueHidden = 4;
-            case "5 of Spades", "5 of Diamonds", "5 of Clubs", "5 of Hearts" -> playerValueHidden = 5;
-            case "6 of Spades", "6 of Diamonds", "6 of Clubs", "6 of Hearts" -> playerValueHidden = 6;
-            case "7 of Spades", "7 of Diamonds", "7 of Clubs", "7 of Hearts" -> playerValueHidden = 7;
-            case "8 of Spades", "8 of Clubs", "8 of Diamonds", "8 of Hearts" -> playerValueHidden = 8;
-            case "9 of Spades", "9 of Diamonds", "9 of Clubs", "9 of Hearts" -> playerValueHidden = 9;
-            case "10 of Spades", "10 of Hearts", "10 of Diamonds", "10 of Clubs", "Jack of Spades",
-                    "Jack of Diamonds", "Jack of Clubs", "Jack of Hearts", "Queen of Spades",
-                    "Queen of Diamonds", "Queen of Clubs", "Queen of Hearts", "King of Spades",
-                    "King of Diamonds", "King of Clubs", "King of Hearts" -> playerValueHidden = 10;
-            default -> System.out.println("Error");
-            // this will be the value the computer does not show;
-            //this is one of the players cards;
-            // this will help determine if the computer chooses more that 21;
-        }
-        //creates total value for comp and player
-        //this is to remain hidden
-
-        final int playerAddedValue = playerValue + playerValueHidden;
-
-        return playerAddedValue;
+        return playerValue;
     }
     private int users;
 
@@ -357,3 +313,4 @@ public class Deck {
 
     }
 }
+
