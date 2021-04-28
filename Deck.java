@@ -5,7 +5,6 @@
  */
 
 import java.util.Scanner;
-
 import java.util.Random;
 
 public class Deck {
@@ -104,11 +103,9 @@ public class Deck {
 
         int compValue = 0;
 
-        int aceChoice;
+        int aceChoice = random.nextInt(2);
         switch (compCard1) {
             case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
-                aceChoice = scanner.nextInt();
                 if (aceChoice == 1) {
 
                     compValue = 1;
@@ -142,7 +139,7 @@ public class Deck {
         }
 
 
-        System.out.println("your new card is the " + compCard1);
+        System.out.println("the computers new card it the " + compCard1);
 
         return compValue;
     }
