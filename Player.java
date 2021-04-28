@@ -1,22 +1,24 @@
-/* Printing players for BlackJack
- * Matthew W. Gavin R. Caleb P. Sean C.
- * 26 April 2021
- * Where I keep the information about each player
- * Where the player makes moves
+/* player for BlackJack
+ * Matthew W. Gavin R. Caleb
+ * 4 April 2021
+ * controles player moves and other things
  */
 
 import java.util.InputMismatchException;
-
+import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
-//i know this doesn't do exactly what it supposed to but that's on purpose ill fix it.
     public static void main(String[] args) {
+        Random random = new Random();
         Scanner input = new Scanner(System.in);
         Deck deck = new Deck();
         int compValue = deck.getCompValue();
         int playerValue = deck.getPlayerValue();
-        //i don't know if these are the correct terms
+        //this will have the computer randomly choose if it wants a card or not
+        int compChoice = random.nextInt(2);
+
+
         boolean loop = false;
         while(!loop){
             try{
@@ -26,7 +28,7 @@ public class Player {
 
                 loop = true;
                 if(playerChoice.equals("HIT")){
-                    playerValue = playerValue + deck.getNewCard();
+                    playerValue = playerValue + deck.playerGetNewCard();
                     if (playerValue > 21){
                         System.out.println("you lose");
                     }
@@ -36,9 +38,16 @@ public class Player {
                     System.out.println("Your input was invalid...");
                     loop = false;
                 }
-            }catch(InputMismatchException e){
+            }catch(InputMismatchException e) {
                 System.out.println("please try again:");
             }
+        }
+        if(compChoice == 1){
+            compValue = compValue + deck.compGetNewCard();
+        }
+        else{
+            System.out.println("the computer has chose not to hit it is now your turn");
+            loop = false;
         }
 
     }
