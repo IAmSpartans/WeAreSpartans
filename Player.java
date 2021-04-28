@@ -27,7 +27,9 @@ public class Player {
                 loop = true;
                 if(playerChoice.equals("HIT")){
                     playerValue = playerValue + deck.getNewCard();
-                    System.out.println(playerValue);
+                    if (playerValue > 21){
+                        System.out.println("you lose");
+                    }
                 }else if(playerChoice.equals("PASS")){
 
                 }else{
