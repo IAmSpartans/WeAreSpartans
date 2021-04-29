@@ -9,10 +9,20 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
+
+
+
     public static void main(String[] args) {
 
     }
     public void game(){
+        main getName = new main();
+        String compName = getName.compName();
+        String playerName = getName.playerName();
+        System.out.println("you are going up against " + compName);
+        System.out.println( "Welcome " + playerName
+                + " and " + compName + ". Please enjoy your game.");
+
         Random random = new Random();
         Scanner input = new Scanner(System.in);
         Deck deck = new Deck();
@@ -25,6 +35,7 @@ public class Player {
         boolean loop = false;
         while(!loop){
             try{
+                System.out.println("It is now " + playerName + "'s turn to go");
                 System.out.println("would you like to hit or pass");
                 String playerChoice = input.nextLine();
                 playerChoice = playerChoice.toUpperCase();
@@ -34,9 +45,10 @@ public class Player {
                     playerValue = playerValue + deck.playerGetNewCard();
                     if (playerValue > 21){
                         System.out.println("you lose");
+                        break;
                     }
                 }else if(playerChoice.equals("PASS")){
-
+                    System.out.println("it is now " + compName + "'s turn to go");
                 }else{
                     System.out.println("Your input was invalid...");
                     loop = false;
@@ -59,18 +71,6 @@ public class Player {
     private String name;
     private int playersCard;
 
-    public Player(String n, int player) {
-        setName(n, player);
-    }
-
-    public Player() {
-
-    }
-
-    public void setName(String n, int player) {
-        name = n;
-        playersCard = player;
-
-    }
+    
 
 }
