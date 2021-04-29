@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 public class Player {
     public static void main(String[] args) {
+
+    }
+    public void game(){
         Random random = new Random();
         Scanner input = new Scanner(System.in);
         Deck deck = new Deck();
