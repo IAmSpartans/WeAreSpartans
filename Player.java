@@ -1,7 +1,7 @@
 /* player for BlackJack
  * Matthew W. Gavin R. Caleb
  * 4 April 2021
- * controles player moves and other things
+ * controls player moves and other things
  */
 
 import java.util.InputMismatchException;
@@ -36,18 +36,36 @@ public class Player {
         while(!loop){
             try{
                 System.out.println("It is now " + playerName + "'s turn to go");
-                System.out.println("would you like to hit or pass");
+                System.out.println("would you like to hit or stay");
                 String playerChoice = input.nextLine();
                 playerChoice = playerChoice.toUpperCase();
 
                 loop = true;
                 if(playerChoice.equals("HIT")){
                     playerValue = playerValue + deck.playerGetNewCard();
+                    System.out.println("would you like to hit again");
+                    String again = input.nextLine();
+                    if (again.equals("HIT")){
+                        playerValue = playerValue + deck.playerGetNewCard();
+                        System.out.println("would you like to hit again");
+                        String again2 = input.nextLine();
+                        if(again2.equals("HIT")){
+                                playerValue = playerValue + deck.playerGetNewCard();
+                                if(playerValue > 21){
+                                    System.out.println("you lose");
+                                    break;
+                                }
+                        }
+                        if(playerValue > 21){
+                            System.out.println("you lose");
+                            break;
+                        }
+                    }
                     if (playerValue > 21){
                         System.out.println("you lose");
                         break;
                     }
-                }else if(playerChoice.equals("PASS")){
+                }else if(playerChoice.equals("STAY")){
                     System.out.println("it is now " + compName + "'s turn to go");
                 }else{
                     System.out.println("Your input was invalid...");
@@ -64,13 +82,11 @@ public class Player {
             System.out.println("the computer has chose not to hit it is now your turn");
             loop = false;
         }
+        System.out.println("goodbye");
 
     }
 
-
     private String name;
     private int playersCard;
-
-    
 
 }
