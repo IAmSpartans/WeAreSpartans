@@ -11,7 +11,7 @@
 
 import java.util.Scanner;
 import java.util.Random;
-public class Main {
+public class main {
 
     public String playerName(){
         String players;
