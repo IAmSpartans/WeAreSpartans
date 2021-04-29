@@ -1,4 +1,5 @@
 
+
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -8,30 +9,36 @@
 
 
 import java.util.Scanner;
-
+import java.util.Random;
 public class main {
-    public static void main(String[] args) {
-        Deck deck = new Deck();
-
-        String[] players = new String[2];
-        int current;
+    
+    public String playerName(){
+        String players;
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
-        players[0] = input.nextLine();
-        System.out.print( "What is the name of the second player? ");
-        players[1] = input.nextLine();
-        System.out.println( "Welcome " + players[0]
-                + " and " + players[1] + ". Please enjoy your game.");
-        current = 0;
+        players = input.nextLine();
+        return players;
+    }
+    
+    public String compName(){
+        Random random = new Random();
+        int getCompName = random.nextInt(5);
+        String[] compName = {"Jack", "Tim", "samantha", "MacGyver", "Bob"};
+        String players;
+        players = compName[getCompName];
+        return players;
+    }
+
+    public static void main(String[] args) {
+        Deck deck = new Deck();
+        main call = new main();
+        String compName = call.compName();
+        String playerName = call.playerName();
+        
+        System.out.println("you are going up against " + compName);
+        System.out.println( "Welcome " + playerName
+                + " and " + compName + ". Please enjoy your game.");
         Player game = new Player();
         game.game();
-        boolean loop = true;
-        int playerIndex = 0;
-        do {
-            System.out.println("It is now time for " + players[current] + " to make a move");
-
-            if (playerIndex == 0) loop = false;
-            else playerIndex--;
-        } while (loop);
     }
 }
