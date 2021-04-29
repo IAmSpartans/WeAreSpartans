@@ -1,5 +1,6 @@
 
 
+
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -10,8 +11,8 @@
 
 import java.util.Scanner;
 import java.util.Random;
-public class main {
-    
+public class Main {
+
     public String playerName(){
         String players;
         Scanner input = new Scanner(System.in);
@@ -19,7 +20,7 @@ public class main {
         players = input.nextLine();
         return players;
     }
-    
+
     public String compName(){
         Random random = new Random();
         int getCompName = random.nextInt(5);
@@ -32,12 +33,6 @@ public class main {
     public static void main(String[] args) {
         Deck deck = new Deck();
         main call = new main();
-        String compName = call.compName();
-        String playerName = call.playerName();
-        
-        System.out.println("you are going up against " + compName);
-        System.out.println( "Welcome " + playerName
-                + " and " + compName + ". Please enjoy your game.");
         Player game = new Player();
         game.game();
     }
