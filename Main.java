@@ -1,3 +1,4 @@
+
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -8,20 +9,22 @@
 
 import java.util.Scanner;
 
-public class Main {
-    public static <current> void main(String[] args) {
+public class main {
+    public static void main(String[] args) {
         Deck deck = new Deck();
 
-        Player[] players = new Player[2];
+        String[] players = new String[2];
         int current;
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
-        players[0] = new Player(input.nextLine(), 1);
+        players[0] = input.nextLine();
         System.out.print( "What is the name of the second player? ");
-        players[1] = new Player(input.nextLine(), 2);
+        players[1] = input.nextLine();
         System.out.println( "Welcome " + players[0]
                 + " and " + players[1] + ". Please enjoy your game.");
         current = 0;
+        Player game = new Player();
+        game.game();
         boolean loop = true;
         int playerIndex = 0;
         do {
@@ -32,4 +35,3 @@ public class Main {
         } while (loop);
     }
 }
-
