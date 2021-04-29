@@ -138,7 +138,7 @@ public class Deck {
             // this will help determine if the computer chooses more that 21;
         }
 
-
+        System.out.println("the computer chose to hit");
         System.out.println("the computers new card it the " + compCard1);
 
         return compValue;
