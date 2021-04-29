@@ -15,22 +15,21 @@ public class Main {
         Player[] players = new Player[2];
         int current;
         Scanner input = new Scanner(System.in);
-        Deck.printDeck();
-        System.out.print("Welcome to Mancala\n" + "What is the name of the first player? ");
+        System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
         players[0] = new Player(input.nextLine(), 1);
         System.out.print( "What is the name of the second player? ");
         players[1] = new Player(input.nextLine(), 2);
-        System.out.println( "Welcome " + players[0].getName()
-                + " and " + players[1].Name()
-                + ". Please enjoy your game.");
+        System.out.println( "Welcome " + players[0]
+                + " and " + players[1] + ". Please enjoy your game.");
         current = 0;
         boolean loop = true;
         int playerIndex = 0;
         do {
-            System.out.println("It is now time for " + players[current].getName() + " to make a move");
-            
+            System.out.println("It is now time for " + players[current] + " to make a move");
+
             if (playerIndex == 0) loop = false;
             else playerIndex--;
         } while (loop);
     }
 }
+
