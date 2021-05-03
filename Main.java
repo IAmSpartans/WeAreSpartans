@@ -1,6 +1,3 @@
-
-
-
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
