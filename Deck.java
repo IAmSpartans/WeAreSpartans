@@ -1,5 +1,6 @@
+
 /* Deck for BlackJack
- * Matthew W. Gavin R. Caleb Sean C.
+ * Matthew W. Gavin R. Caleb
  * 4 April 2021
  * First Create the 4 suits
  */
@@ -79,7 +80,6 @@ public class Deck {
     }
     public int compGetNewCard(){
 
-        Scanner scanner = new Scanner(System.in);
 
         Random random = new Random();
 
@@ -110,13 +110,9 @@ public class Deck {
 
                     compValue = 1;
 
-                } else if (aceChoice == 11) {
+                } else{
 
                     compValue = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
 
                 }
             }
@@ -139,7 +135,6 @@ public class Deck {
         }
 
         System.out.println("the computer chose to hit");
-        System.out.println("the computers new card it the " + compCard1);
 
         return compValue;
     }
