@@ -10,14 +10,9 @@ import java.util.Scanner;
 
 public class Player {
 
-
-
-    public static void main(String[] args) {
-
-    }
     public void game() {
         Main main = new Main();
-        String choice = main.getPlayerColor(System.in);
+        String choice = main.getPlayerColor();
         String compDefault = main.getCompColor();
         String againAgain;
         do{
