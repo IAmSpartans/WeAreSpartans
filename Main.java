@@ -1,3 +1,5 @@
+
+
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -6,9 +8,10 @@
 
 
 
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.Random;
-public class main {
+public class Main {
 
     public String playerName(){
         String players;
@@ -27,10 +30,37 @@ public class main {
         return players;
     }
 
+    public String getPlayerColor(InputStream in) {
+        Color color = new Color();
+        Scanner scanner = new Scanner(System.in);
+        String choice = null;
+        System.out.println("would you like to be green or blue");
+        String co = scanner.nextLine();
+        co = co.toUpperCase();
+        if(co.equals("GREEN")){
+            choice = Color.GREEN;
+            return choice;
+        } else if(co.equals("BLUE")){
+            choice = Color.BLUE;
+        }
+        return choice;
+    }
+
+    public String getCompColor(){
+        Color color = new Color();
+        String def;
+        String choice = getPlayerColor(System.in);
+        if(choice.equals(Color.GREEN)){
+            def = Color.BLUE;
+        }else{
+            def = Color.GREEN;
+        }
+        return def;
+    }
+
     public static void main(String[] args) {
-        Deck deck = new Deck();
-        main call = new main();
         Player game = new Player();
         game.game();
     }
+
 }
