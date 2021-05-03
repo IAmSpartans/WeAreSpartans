@@ -9,6 +9,7 @@
 
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Random;
 public class Main {
@@ -30,27 +31,24 @@ public class Main {
         return players;
     }
 
-    public String getPlayerColor(InputStream in) {
-        Color color = new Color();
+    String choice;
+
+    public String getPlayerColor() {
         Scanner scanner = new Scanner(System.in);
-        String choice = null;
         System.out.println("would you like to be green or blue");
         String co = scanner.nextLine();
         co = co.toUpperCase();
         if(co.equals("GREEN")){
             choice = Color.GREEN;
-            return choice;
         } else if(co.equals("BLUE")){
-            choice = Color.BLUE;
+            this.choice = Color.BLUE;
         }
         return choice;
     }
 
     public String getCompColor(){
-        Color color = new Color();
         String def;
-        String choice = getPlayerColor(System.in);
-        if(choice.equals(Color.GREEN)){
+        if(Objects.equals(this.choice, Color.GREEN)){
             def = Color.BLUE;
         }else{
             def = Color.GREEN;
