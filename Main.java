@@ -8,7 +8,6 @@
 
 
 
-import java.io.InputStream;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.Random;
@@ -25,7 +24,7 @@ public class Main {
     public String compName(){
         Random random = new Random();
         int getCompName = random.nextInt(5);
-        String[] compName = {"Jack", "Tim", "samantha", "MacGyver", "Bob"};
+        String[] compName = {"Jack", "Tim", "samantha", "Papa-tim", "Bob"};
         String players;
         players = compName[getCompName];
         return players;
@@ -57,6 +56,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        //i need to make so that once both players stay the game ends and it checks who won.
         Player game = new Player();
         game.game();
     }
