@@ -365,7 +365,7 @@ public class Deck {
         }
         //creates total value for comp and player
         //this is to remain hidden
-        System.out.println("The computer has two hidden cards");
+        System.out.println("The computer has one hidden card and the " + compCard1);
 
         int compAddedValue = compValue + compValueHidden;
 
