@@ -29,67 +29,51 @@ public class Player {
             Deck deck = new Deck();
             int compValue = deck.getCompValue();
             int playerValue = deck.getPlayerValue();
+            String hitAgain;
             //this will have the computer randomly choose if it wants a card or not
+            int compHitAgain = random.nextInt(2);
+            int compHitAgain2 = random.nextInt(2);
             int compChoice = random.nextInt(2);
-
-            boolean turn = false;
-            boolean loop = false;
-            while (!loop) {
-                if (!turn) {
-                    System.out.println(choice + "It is now " + playerName + "'s turn to go");
-                    System.out.println("would you like to hit or stay");
-                    String playerChoice = input.nextLine();
-                    playerChoice = playerChoice.toUpperCase();
-                    String again = "VOID";
-                    loop = true;
-                    if (playerChoice.equals("HIT")) {
-                        do {
-                            playerValue = playerValue + deck.playerGetNewCard();
-                            if (playerValue > 21) {
-                                System.out.println("you lose, you went over 21");
-                            } else if (playerValue < 21) {
-                                System.out.println("would you like to hit again or Stay");
-                                again = input.nextLine();
-                                again = again.toUpperCase();
-                            } else if (playerValue == 21) {
-                                System.out.println("you won.");
-                                break;
-                            } else if (playerChoice.equals("STAY")) {
-                                break;
-                            } else {
-                                System.out.println("Your input was invalid...");
-                                loop = false;
-                            }
-                        } while (again.equals("HIT"));
-                    } else if (playerChoice.equals("STAY")) {
-                        continue;
+            System.out.println(choice + "It is now " + playerName + "'s turn to go");
+            System.out.println("would you like to hit or stay");
+            String playerChoice = input.nextLine();
+            playerChoice = playerChoice.toUpperCase();
+            if (playerChoice.equals("HIT")) {
+                do {
+                    playerValue = playerValue + deck.playerGetNewCard();
+                    System.out.println("would you like to hit again (yes or no):");
+                    hitAgain = input.nextLine();
+                    hitAgain = hitAgain.toUpperCase();
+                    if (!hitAgain.equals("NO")) {
+                        System.out.println("your input was invalid computer is breaking by default:");
+                    } else{
+                        break;
                     }
-                } else if (turn){
-                    do{
-                        if(compAgain > 1){
-                            System.out.println("the computer chose to hit again.");
-                        }
-                        compAgain++;
-                        if (compAgain < 1){
-                            System.out.println(compDefault + "it is now " + compName + "'s turn to go");
-                        }
-                        if (compChoice == 1) {
-                            compValue = compValue + deck.compGetNewCard();
-                            if (compValue == 21) {
-                                System.out.println("the computer won");
-                                break;
-                            } else if (compValue > 21) {
-                                System.out.println("you won the computer went over 21");
-                                break;
-                            }
-                        } else {
-                            System.out.println("the computer has chose not to hit");
-                            loop = false;
-                        }
-                    }while(loop);
-                }
-                turn = !turn;
+                    break;
+                }while(hitAgain.equals("YES"));
+            } else if (playerChoice.equals("STAY")) {
+                System.out.println("you have chosen to stay:" + Color.RESET);
+                continue;
             }
+            if(compAgain > 1){
+                System.out.println(compDefault +"the computer chose to hit again.");
+            }
+            compAgain++;
+            if (compAgain < 1){
+                System.out.println(compDefault + "it is now " + compName + "'s turn to go");
+            }
+            if (compChoice == 1) {
+                do {
+                    compValue = compValue + deck.compGetNewCard();
+                    compHitAgain++;
+                    compHitAgain2++;
+                }while(compHitAgain != 1 || compHitAgain2 != 1);
+            } else {
+                System.out.println("the computer has chose to stay" + Color.RESET);
+            }
+            //if(compValue ){
+                //System.out.println("");
+            //}
             System.out.println("the game is over would you like to play again?(yes or no)");
             againAgain = input.nextLine();
             againAgain = againAgain.toUpperCase();
