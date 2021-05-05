@@ -71,9 +71,15 @@ public class Player {
             } else {
                 System.out.println("the computer has chose to stay" + Color.RESET);
             }
-            //if(compValue ){
-                //System.out.println("");
-            //}
+            if(compValue > 21 || playerValue > 21){
+                System.out.println("its a tie you both lose");
+            }else if(compValue == 21){
+                System.out.println("the computer won");
+            } else if(playerValue == 21){
+                System.out.println("you won");
+            }else if(){
+                
+            }
             System.out.println("the game is over would you like to play again?(yes or no)");
             againAgain = input.nextLine();
             againAgain = againAgain.toUpperCase();
