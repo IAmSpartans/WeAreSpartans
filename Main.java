@@ -1,5 +1,4 @@
 
-
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -13,22 +12,14 @@ import java.util.Scanner;
 import java.util.Random;
 public class Main {
 
+    String players;
     public String playerName(){
-        String players;
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
         players = input.nextLine();
         return players;
     }
 
-    public String compName(){
-        Random random = new Random();
-        int getCompName = random.nextInt(5);
-        String[] compName = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
-        String players;
-        players = compName[getCompName];
-        return players;
-    }
 
     String choice;
 
