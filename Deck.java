@@ -1,3 +1,4 @@
+
 /* Deck for BlackJack
  * Matthew W. Gavin R. Caleb
  * 4 April 2021
@@ -287,7 +288,7 @@ public class Deck {
 
         int generateCard2 = random.nextInt(13);
 
-        String compName = main.compName();
+        String compName = CompName.compName();
         //generates two cards randomly for each player
 
         String[] card = {"Spades", "Diamonds", "Clubs", "Hearts"};
