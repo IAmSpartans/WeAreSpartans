@@ -1,0 +1,18 @@
+import java.util.Random;
+
+public class CompName {
+    private static String name;
+
+    CompName(){
+            Random random = new Random();
+            int getCompName = random.nextInt(5);
+            String[] compName = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
+            String computerName;
+            computerName = compName[getCompName];
+            name = computerName;
+    }
+    static String compName(){
+        return name;
+    }
+
+}
