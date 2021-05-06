@@ -24,7 +24,7 @@ public class Main {
     public String compName(){
         Random random = new Random();
         int getCompName = random.nextInt(5);
-        String[] compName = {"Jack", "Tim", "samantha", "Papa-tim", "Bob"};
+        String[] compName = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
         String players;
         players = compName[getCompName];
         return players;
