@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Player {
 
     public void game() {
+        Score score = new Score();
         int compAgain = 0;
         Main main = new Main();
         String choice = main.getPlayerColor();
@@ -17,7 +18,7 @@ public class Player {
         String againAgain;
 
         Main getName = new Main();
-        String compName = getName.compName();
+        String compName = CompName.compName();
         String playerName = getName.playerName();
         System.out.println("you are going up against " + compName);
         System.out.println("Welcome " + playerName
