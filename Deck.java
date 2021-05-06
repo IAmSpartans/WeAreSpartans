@@ -1,10 +1,10 @@
-
 /* Deck for BlackJack
  * Matthew W. Gavin R. Caleb
  * 4 April 2021
  * First Create the 4 suits
  */
 
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -134,15 +134,8 @@ public class Deck {
             // this will help determine if the computer chooses more that 21;
         }
 
-        System.out.println("the computer chose to hit");
-
         return compValue;
     }
-    private int users;
-
-    private Player[] players;
-
-    private Deck deck;
 
     public int getPlayerValue(){
         Scanner scanner = new Scanner(System.in);
@@ -156,6 +149,10 @@ public class Deck {
         int generateSuit4 = random.nextInt(4);
 
         int generateCard4 = random.nextInt(13);
+
+        int generateSuit5 = random.nextInt(4);
+
+        int generateCard5 = random.nextInt(13);
 
 
         //generates two cards randomly for each player
@@ -172,29 +169,18 @@ public class Deck {
         String playerCard2Hidden = value[generateCard4] + card[generateSuit4];
         //hidden player value
 
+        String playerSafeCard = value[generateCard5] + card[generateSuit5];
+        //this is for if there is a duplicate
+
 
         int playerValue = 0;
         int playerValueHidden = 0;
+        int playerSafe = 0;
+        int aceChoice2;
+        int aceChoice3;
 
-        int aceChoice;
         switch (playerCard1) {
-            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
-                aceChoice = scanner.nextInt();
-                if (aceChoice == 1) {
-
-                    playerValue = 1;
-
-                } else if (aceChoice == 11) {
-
-                    playerValue = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
-
-                }
-            }
+            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> playerValue = 1;
             case "2 of Spades", "2 of Diamonds", "2 of Clubs", "2 of Hearts" -> playerValue = 2;
             case "3 of Spades", "3 of Diamonds", "3 of Clubs", "3 of Hearts" -> playerValue = 3;
             case "4 of Spades", "4 of Diamonds", "4 of Clubs", "4 of Hearts" -> playerValue = 4;
@@ -212,24 +198,27 @@ public class Deck {
             //this is one of the players cards;
             // this will help determine if the computer chooses more that 21;
         }
+        switch (playerSafeCard) {
+            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> playerSafe = 1;
+            case "2 of Spades", "2 of Diamonds", "2 of Clubs", "2 of Hearts" -> playerSafe = 2;
+            case "3 of Spades", "3 of Diamonds", "3 of Clubs", "3 of Hearts" -> playerSafe = 3;
+            case "4 of Spades", "4 of Diamonds", "4 of Clubs", "4 of Hearts" -> playerSafe = 4;
+            case "5 of Spades", "5 of Diamonds", "5 of Clubs", "5 of Hearts" -> playerSafe = 5;
+            case "6 of Spades", "6 of Diamonds", "6 of Clubs", "6 of Hearts" -> playerSafe = 6;
+            case "7 of Spades", "7 of Diamonds", "7 of Clubs", "7 of Hearts" -> playerSafe = 7;
+            case "8 of Spades", "8 of Clubs", "8 of Diamonds", "8 of Hearts" -> playerSafe = 8;
+            case "9 of Spades", "9 of Diamonds", "9 of Clubs", "9 of Hearts" -> playerSafe = 9;
+            case "10 of Spades", "10 of Hearts", "10 of Diamonds", "10 of Clubs", "Jack of Spades",
+                    "Jack of Diamonds", "Jack of Clubs", "Jack of Hearts", "Queen of Spades",
+                    "Queen of Diamonds", "Queen of Clubs", "Queen of Hearts", "King of Spades",
+                    "King of Diamonds", "King of Clubs", "King of Hearts" -> playerSafe = 10;
+            default -> System.out.println("Error");
+            // this will be the value the computer does not show;
+            //this is one of the players cards;
+            // this will help determine if the computer chooses more that 21;
+        }
         switch (playerCard2Hidden) {
-            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
-                aceChoice = scanner.nextInt();
-                if (aceChoice == 1) {
-
-                    playerValueHidden = 1;
-
-                } else if (aceChoice == 11) {
-
-                    playerValueHidden = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
-
-                }
-            }
+            case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> playerValueHidden = 1;
             case "2 of Spades", "2 of Diamonds", "2 of Clubs", "2 of Hearts" -> playerValueHidden = 2;
             case "3 of Spades", "3 of Diamonds", "3 of Clubs", "3 of Hearts" -> playerValueHidden = 3;
             case "4 of Spades", "4 of Diamonds", "4 of Clubs", "4 of Hearts" -> playerValueHidden = 4;
@@ -248,20 +237,47 @@ public class Deck {
             // this will help determine if the computer chooses more that 21;
         }
         //creates total value for comp and player
-        //this is to remain hidden
+        if(Objects.equals(playerCard1, playerCard2Hidden)){
+            playerCard2Hidden = playerSafeCard;
+            playerValueHidden = playerSafe;
+        }
 
         System.out.println("you have the " + playerCard2Hidden + " and the " + playerCard1);
 
+        if(playerValueHidden == 1){
+            System.out.println("would you like to have your ace equal 1 or ll:");
+            aceChoice2 = scanner.nextInt();
+            if (aceChoice2 == 11) {
 
-        final int playerAddedValue = playerValue + playerValueHidden;
+                playerValueHidden = 11;
 
-        return playerAddedValue;
+            } else {
+
+                System.out.println("your input was invalid");
+
+            }
+        }else if(playerValue == 1){
+            System.out.println("would you like to have your ace equal 1 or ll:");
+            aceChoice3 = scanner.nextInt();
+            if (aceChoice3 == 11) {
+
+                playerValue = 11;
+
+            } else {
+
+                System.out.println("your input was invalid");
+
+            }
+        }
+        return playerValue + playerValueHidden;
     }
 
     public int getCompValue(){
         Scanner scanner = new Scanner(System.in);
 
         Random random = new Random();
+
+        Main main = new Main();
 
         int generateSuit = random.nextInt(4);
 
@@ -271,7 +287,7 @@ public class Deck {
 
         int generateCard2 = random.nextInt(13);
 
-
+        String compName = main.compName();
         //generates two cards randomly for each player
 
         String[] card = {"Spades", "Diamonds", "Clubs", "Hearts"};
@@ -289,24 +305,18 @@ public class Deck {
         int compValue = 0;
         int compValueHidden = 0;
 
-        int aceChoice;
+        int aceChoice = random.nextInt(3);
 
 
         switch (compCard1) {
             case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
-                aceChoice = scanner.nextInt();
                 if (aceChoice == 1) {
 
                     compValue = 1;
 
-                } else if (aceChoice == 11) {
+                } else if (aceChoice == 2) {
 
                     compValue = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
 
                 }
             }
@@ -330,19 +340,14 @@ public class Deck {
 
         switch (compCard2Hidden) {
             case "Ace of Spades", "Ace of Diamonds", "Ace of Clubs", "Ace of Hearts" -> {
-                System.out.println("would you like to have your ace equal 1 or ll:");
                 aceChoice = scanner.nextInt();
                 if (aceChoice == 1) {
 
                     compValueHidden = 1;
 
-                } else if (aceChoice == 11) {
+                } else if (aceChoice == 2) {
 
                     compValueHidden = 11;
-
-                } else {
-
-                    System.out.println("your input was invalid");
 
                 }
             }
@@ -365,11 +370,9 @@ public class Deck {
         }
         //creates total value for comp and player
         //this is to remain hidden
-        System.out.println("The computer has one hidden card and the " + compCard1);
+        System.out.println(compName + " has two hidden cards");
 
-        int compAddedValue = compValue + compValueHidden;
-
-        return compAddedValue;
+        return compValue + compValueHidden;
 
     }
 }
