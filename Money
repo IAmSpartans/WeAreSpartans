@@ -1,0 +1,37 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class Money {
+    void inputScore(int playerMoney){
+        Main main = new Main();
+        String playerName = main.players;
+        String fileName = playerName + ".txt";
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
+            bw.write(playerMoney);
+            bw.close();
+        }catch(Exception ignored){
+        }
+    }
+
+    int getMoney(){
+        Main main = new Main();
+        int retVal = 0;
+        String playerName = main.players;
+        String fileName = playerName + ".txt";
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            retVal = br.read();
+            if(retVal == 0){
+                retVal = 500;
+                System.out.println("since you are a new player you will start with $" + retVal);
+            }else{
+                System.out.println("you have $" + retVal);
+            }
+        }catch(Exception ignored){
+        }
+        return retVal;
+    }
+}
