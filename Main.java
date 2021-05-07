@@ -9,23 +9,22 @@
 
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.Random;
+
 public class Main {
 
     String players;
-    public String playerName(){
+    public void playerName(){
         Scanner input = new Scanner(System.in);
         System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
         players = input.nextLine();
-        return players;
     }
 
 
     String choice;
 
-    public String getPlayerColor() {
+    public void getPlayerColor() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("would you like to be green or blue");
+        System.out.println("would you like your color to be green or blue");
         String co = scanner.nextLine();
         co = co.toUpperCase();
         if(co.equals("GREEN")){
@@ -33,7 +32,6 @@ public class Main {
         } else if(co.equals("BLUE")){
             this.choice = Color.BLUE;
         }
-        return choice;
     }
 
     public String getCompColor(){
@@ -46,10 +44,28 @@ public class Main {
         return def;
     }
 
-    public static void main(String[] args) {
-        //i need to make so that once both players stay the game ends and it checks who won.
+    void run(){
         Player game = new Player();
-        game.game();
+        Money money = new Money();
+        Scanner scanner = new Scanner(System.in);
+        String choice;
+        do{
+            money.getMoney();
+            game.bet();
+            game.compBet();
+            game.game();
+            choice = scanner.nextLine();
+            choice = choice.toUpperCase();
+            if (!choice.equals("YES")) System.out.println("goodbye");
+        }while(choice.equals("YES"));
+    }
+
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.getPlayerColor();
+        main.getCompColor();
+        main.playerName();
+        main.run();
     }
 
 }
