@@ -21,7 +21,6 @@ public class Deck {
 
         int generateCard3 = random.nextInt(13);
 
-
         //generates two cards randomly for each player
 
         String[] card = {"Spades", "Diamonds", "Clubs", "Hearts"};
@@ -32,8 +31,6 @@ public class Deck {
 
         String playerCard1 = value[generateCard3] + card[generateSuit3];
         //shown player value
-
-
 
         int playerValue = 0;
 
@@ -74,13 +71,12 @@ public class Deck {
             // this will help determine if the computer chooses more that 21;
         }
 
-
         System.out.println("your new card is the " + playerCard1);
 
         return playerValue;
     }
-    public int compGetNewCard(){
 
+    public int compGetNewCard(){
 
         Random random = new Random();
 
@@ -99,8 +95,6 @@ public class Deck {
 
         String compCard1 = value[generateCard3] + card[generateSuit3];
         //shown player value
-
-
 
         int compValue = 0;
 
@@ -136,6 +130,7 @@ public class Deck {
         }
 
         return compValue;
+
     }
 
     public int getPlayerValue(){
@@ -253,9 +248,9 @@ public class Deck {
                 playerValueHidden = 11;
 
             } else {
-
-                System.out.println("your input was invalid");
-
+                if (aceChoice2 != 1) {
+                    System.out.println("your input was invalid");
+                }
             }
         }else if(playerValue == 1){
             System.out.println("would you like to have your ace equal 1 or ll:");
@@ -265,9 +260,9 @@ public class Deck {
                 playerValue = 11;
 
             } else {
-
-                System.out.println("your input was invalid");
-
+                if (aceChoice3 != 1) {
+                    System.out.println("your input was invalid");
+                }
             }
         }
         return playerValue + playerValueHidden;
@@ -277,8 +272,6 @@ public class Deck {
         Scanner scanner = new Scanner(System.in);
 
         Random random = new Random();
-
-        Main main = new Main();
 
         int generateSuit = random.nextInt(4);
 
