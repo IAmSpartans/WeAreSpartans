@@ -1,16 +1,13 @@
-/* player for BlackJack
- * Matthew W. Gavin R. Caleb
- * 4 April 2021
- * controls player moves and other things
+/* Printing players for BlackJack
+ * Matthew W. Gavin R. Caleb Sean C.
+ * 26 April 2021
+ * Where I keep the information about each player
  */
-
 import java.util.Random;
 import java.util.Scanner;
-
 public class Player {
-
     int playerBet;
-
+    CompName Compname = new CompName();
     void bet() {
         Scanner input = new Scanner(System.in);
         System.out.println("would you like to bet 10, 50, or 100 dollars:");
@@ -23,9 +20,7 @@ public class Player {
             }
         } while (playerBet != 10 && playerBet != 50 && playerBet != 100);
     }
-
     int compBetValue;
-
     void compBet() {
         Random random = new Random();
         int get = random.nextInt(3);
@@ -33,12 +28,9 @@ public class Player {
         this.compBetValue = values[get];
         System.out.println("the computer has chosen to bet $" + compBetValue);
     }
-
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
-
     public void game() {
-
         Main getInformation = new Main();
         saveToFile();
         int bet = playerBet;
@@ -47,13 +39,12 @@ public class Player {
         String choice = getInformation.choice;
         String compDefault = getInformation.getCompColor();
         String againAgain;
-
-        String compName = CompName.compName();
-        String playerName = getInformation.players;
+        String compName;
+        compName = CompName.computerNameFile();
+        String playerName = getInformation.playersone;
         System.out.println("you are going up against " + compName);
         System.out.println("Welcome " + playerName
                 + " and " + compName + ". Please enjoy your game.");
-
         Random random = new Random();
         Scanner input = new Scanner(System.in);
         Deck deck = new Deck();
@@ -62,12 +53,10 @@ public class Player {
         int compValue = deck.getCompValue();
         int playerValue = deck.getPlayerValue();
         int compChoice = random.nextInt(2);
-
         System.out.println(choice + "It is now " + playerName + "'s turn to go");
         System.out.println("would you like to hit or stay");
         String playerChoice = input.nextLine();
         playerChoice = playerChoice.toUpperCase();
-
         if (playerChoice.equals("HIT")) {
             do {
                 playerValue = playerValue + deck.playerGetNewCard();
@@ -81,9 +70,8 @@ public class Player {
                 }
             } while (hitAgain.equals("HIT"));
         } else if (playerChoice.equals("STAY")) {
-            System.out.println("you have chosen to stay:" + Color.RESET);
+            System.out.println("you have chosen to stay:" + Colors.RESET);
         }
-
         if (compChoice == 1) {
             do {
                 if (compAgain > 1) {
@@ -91,17 +79,17 @@ public class Player {
                 }
                 if (compAgain < 1) {
                     System.out.println(compDefault + "it is now " + compName + "'s turn to go");
-                    System.out.println(compName + " chose to hit" + Color.RESET);
+                    System.out.println(compName + " chose to hit" + Colors.RESET);
                 }
                 compValue = compValue + deck.compGetNewCard();
                 compAgain++;
                 compHitAgain = compValue < 15;
                 if (!compHitAgain) {
-                    System.out.println(compDefault + compName + " chose to stay:" + Color.RESET);
+                    System.out.println(compDefault + compName + " chose to stay:" + Colors.RESET);
                 }
             } while (compHitAgain);
         } else {
-            System.out.println(compName + " chose to stay" + Color.RESET);
+            System.out.println(compName + " chose to stay" + Colors.RESET);
         }
         if (playerValue > 21 && compValue < 21) {
             System.out.println("you went over 21 " + compName + " won by default");
@@ -114,7 +102,6 @@ public class Player {
         } else if (playerValue == compValue && playerValue <= 21) {
             //this does not need to say compValue <= 21 because that is implied;
             System.out.println("it's a tie");
-
         } else if (compValue > playerValue && compValue <= 21) {
             System.out.println(compName + " won");
             compFinalValue = bet + compFinalValue;
@@ -126,19 +113,16 @@ public class Player {
         } else {
             System.out.println("an error has occurred");
         }
-
         System.out.println("with a final score of " + playerValue + " to " + compValue);
         System.out.println("you now have $" + amountOFMoney + " and " + compName + " has $" + compFinalValue);
         System.out.println("the game is over would you like to play again?(yes or no)");
     }
-
     void saveToFile() {
         Money money = new Money();
         int playerSaveToFile;
         playerSaveToFile = amountOFMoney;
         money.inputScore(playerSaveToFile);
     }
-
     int getFromFile(){
         Money money = new Money();
         int moneyAmount;
