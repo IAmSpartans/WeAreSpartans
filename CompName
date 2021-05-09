@@ -1,18 +1,16 @@
-
+/* CompName for BlackJack
+ * Matthew W. Gavin R. Caleb P. Sean C.
+ * 27 April 2021
+ * Creates CompName for game play
+ */
 import java.util.Random;
-
 public class CompName {
-    public static String name;
-
-    CompName(){
+    public static String computerNameFile (){
         Random random = new Random();
-        int getCompName = random.nextInt(5);
-        String[] compName = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
+        int getCompName = random.nextInt(4);
+        String[] compNameSt = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
         String computerName;
-        computerName = compName[getCompName];
-        name = computerName;
-    }
-    static String compName(){
-        return name;
+        computerName = compNameSt[getCompName];
+        return computerName;
     }
 }
