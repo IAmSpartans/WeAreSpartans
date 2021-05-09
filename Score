@@ -1,9 +1,13 @@
+/* Scoring for BlackJack
+ * Matthew W. Gavin R. Caleb P. Sean C.
+ * 27 April 2021
+ * Keeps score for games played
+ */
 import java.io.*;
-
 public class Score {
     void getScore(){
         Main main = new Main();
-        String playerName = main.players;
+        String playerName = main.playersone;
         String fileName = playerName + ".txt";
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
@@ -21,5 +25,4 @@ public class Score {
         }catch(Exception ignored){
         }
     }
-
 }
