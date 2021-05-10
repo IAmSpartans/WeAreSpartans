@@ -1,3 +1,4 @@
+
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -7,13 +8,13 @@
 import java.util.Objects;
 import java.util.Scanner;
 public class Main {
-
     Scanner input = new Scanner(System.in);
-    public static String playersone;
+    public static String player;
+    public static Money money;
     public void playerName(){
-        Scanner input = new Scanner(System.in);
         System.out.print("Welcome to BlackJack\n" + "What is the name of the first player? ");
-        playersone = input.next();
+        player = input.next();
+        money = new Money(player);
     }
 
     String choice;
@@ -39,9 +40,10 @@ public class Main {
     }
     void run(){
         Player game = new Player();
-        Money money = new Money();
+        Main main = new Main();
         Scanner scanner = new Scanner(System.in);
         String choice;
+        main.getPlayerColor();
         do{
             money.getMoney();
             game.bet();
@@ -54,10 +56,8 @@ public class Main {
     }
     public static void main(String[] args) {
         Main main = new Main();
-        main.getPlayerColor();
         main.getCompColor();
         main.playerName();
         main.run();
     }
 }
-
