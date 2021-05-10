@@ -1,7 +1,9 @@
+
 /* Deck for BlackJack
  * Matthew W. Gavin R. Caleb Sean C.
  * 4 April 2021
  * First Create the 4 suits
+ * this generates random cards and gives them values
  */
 import java.util.Objects;
 import java.util.Scanner;
@@ -266,4 +268,3 @@ public class Deck {
         return compValue + compValueHidden;
     }
 }
-
