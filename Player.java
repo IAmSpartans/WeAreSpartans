@@ -2,12 +2,14 @@
  * Matthew W. Gavin R. Caleb Sean C.
  * 26 April 2021
  * Where I keep the information about each player
+ * where the game is run
  */
 import java.util.Random;
 import java.util.Scanner;
 public class Player {
+
+    public static String player;
     int playerBet;
-    CompName Compname = new CompName();
     void bet() {
         Scanner input = new Scanner(System.in);
         System.out.println("would you like to bet 10, 50, or 100 dollars:");
@@ -30,6 +32,8 @@ public class Player {
     }
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
+    //add arguments to game to get all information
+    //add information in main class in ru function
     public void game() {
         Main getInformation = new Main();
         saveToFile();
@@ -38,10 +42,9 @@ public class Player {
         int compAgain = 0;
         String choice = getInformation.choice;
         String compDefault = getInformation.getCompColor();
-        String againAgain;
         String compName;
         compName = CompName.computerNameFile();
-        String playerName = getInformation.playersone;
+        String playerName = player;
         System.out.println("you are going up against " + compName);
         System.out.println("Welcome " + playerName
                 + " and " + compName + ". Please enjoy your game.");
@@ -118,15 +121,13 @@ public class Player {
         System.out.println("the game is over would you like to play again?(yes or no)");
     }
     void saveToFile() {
-        Money money = new Money();
         int playerSaveToFile;
         playerSaveToFile = amountOFMoney;
-        money.inputScore(playerSaveToFile);
+        Main.money.inputScore(playerSaveToFile);
     }
     int getFromFile(){
-        Money money = new Money();
         int moneyAmount;
-        moneyAmount = money.getMoney();
+        moneyAmount = Main.money.getMoney();
         return moneyAmount;
     }
 }
