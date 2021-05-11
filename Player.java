@@ -31,7 +31,10 @@ public class Player {
     }
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
-    //add arguments to game to get all information
+   
+    //get comp name in main funciton as a global variable then pass it in 
+    //this way the compName doesnt get called every time so it is static
+     //add arguments to game to get all information
     //add information in main class in ru function
     public void game(String choice, String playerName) {
         Main getInformation = new Main();
