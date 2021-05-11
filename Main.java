@@ -1,4 +1,3 @@
-
 /* Main for BlackJack
  * Matthew W. Gavin R. Caleb P. Sean C.
  * 27 April 2021
@@ -18,7 +17,7 @@ public class Main {
     }
 
     String choice;
-    public void getPlayerColor() {
+    public String getPlayerColor() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("would you like your color to be green or blue");
         String co = scanner.nextLine();
@@ -28,6 +27,7 @@ public class Main {
         } else if(co.equals("BLUE")){
             this.choice = Colors.BLUE;
         }
+        return choice;
     }
     public String getCompColor(){
         String def;
@@ -39,6 +39,8 @@ public class Main {
         return def;
     }
     void run(){
+        //things to fix:
+        //things run twice or more when they are not supposed to 
         Player game = new Player();
         Main main = new Main();
         Scanner scanner = new Scanner(System.in);
@@ -48,7 +50,7 @@ public class Main {
             money.getMoney();
             game.bet();
             game.compBet();
-            game.game();
+            game.game(getPlayerColor(), player);
             choice = scanner.nextLine();
             choice = choice.toUpperCase();
             if (!choice.equals("YES")) System.out.println("goodbye");
