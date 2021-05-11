@@ -31,20 +31,18 @@ public class Player {
     }
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
-   
-    //get comp name in main funciton as a global variable then pass it in 
-    //this way the compName doesnt get called every time so it is static
-     //add arguments to game to get all information
+
+    //get comp name in main function as a global variable then pass it in
+    //this way the compName doesn't get called every time so it is static
+    //add arguments to game to get all information
     //add information in main class in ru function
-    public void game(String choice, String playerName) {
+    public void game(String choice, String playerName, String compName) {
         Main getInformation = new Main();
         saveToFile();
         int bet = playerBet;
         int compBet = compBetValue;
         int compAgain = 0;
         String compDefault = getInformation.getCompColor();
-        String compName;
-        compName = CompName.computerNameFile();
         System.out.println("you are going up against " + compName);
         System.out.println("Welcome " + playerName
                 + " and " + compName + ". Please enjoy your game.");
