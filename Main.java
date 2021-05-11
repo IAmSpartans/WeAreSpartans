@@ -40,17 +40,18 @@ public class Main {
     }
     void run(){
         //things to fix:
-        //things run twice or more when they are not supposed to 
+        //things run twice or more when they are not supposed to
         Player game = new Player();
         Main main = new Main();
+        String compName = CompName.getComputerName();
         Scanner scanner = new Scanner(System.in);
         String choice;
-        main.getPlayerColor();
+        String colorChoice = main.getPlayerColor();
         do{
             money.getMoney();
             game.bet();
             game.compBet();
-            game.game(getPlayerColor(), player);
+            game.game(colorChoice, player, compName);
             choice = scanner.nextLine();
             choice = choice.toUpperCase();
             if (!choice.equals("YES")) System.out.println("goodbye");
