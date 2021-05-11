@@ -5,12 +5,14 @@
  */
 import java.util.Random;
 public class CompName {
-    public static String computerNameFile (){
+    private static String computerName;
+    CompName(){
         Random random = new Random();
         int getCompName = random.nextInt(4);
         String[] compNameSt = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
-        String computerName;
         computerName = compNameSt[getCompName];
+    }
+    public static String getComputerName(){
         return computerName;
     }
 }
