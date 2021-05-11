@@ -199,7 +199,7 @@ public class Deck {
         int generateCard = random.nextInt(13);
         int generateSuit2 = random.nextInt(4);
         int generateCard2 = random.nextInt(13);
-        String compName = CompName.computerNameFile();
+        String compName = CompName.getComputerName();
 //generates two cards randomly for each player
         String[] card = {"Spades", "Diamonds", "Clubs", "Hearts"};
         String[] value = {"Ace of ", "2 of ", "3 of ", "4 of ", "5 of ", "6 of ", "7 of ", "8 of ", "9 of "
@@ -258,7 +258,7 @@ public class Deck {
                     "Queen of Diamonds", "Queen of Clubs", "Queen of Hearts", "King of Spades",
                     "King of Diamonds", "King of Clubs", "King of Hearts" -> compValueHidden = 10;
             default -> System.out.println("Error");
-// this will be the value the computer hides;
+            // this will be the value the computer hides;
             //this is the computer card
             // this will help determine if the computer chooses more that 21;
         }
