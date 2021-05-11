@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.Scanner;
 public class Player {
 
-    public static String player;
     int playerBet;
     void bet() {
         Scanner input = new Scanner(System.in);
@@ -34,17 +33,15 @@ public class Player {
     int amountOFMoney = getFromFile();
     //add arguments to game to get all information
     //add information in main class in ru function
-    public void game() {
+    public void game(String choice, String playerName) {
         Main getInformation = new Main();
         saveToFile();
         int bet = playerBet;
         int compBet = compBetValue;
         int compAgain = 0;
-        String choice = getInformation.choice;
         String compDefault = getInformation.getCompColor();
         String compName;
         compName = CompName.computerNameFile();
-        String playerName = player;
         System.out.println("you are going up against " + compName);
         System.out.println("Welcome " + playerName
                 + " and " + compName + ". Please enjoy your game.");
