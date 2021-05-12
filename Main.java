@@ -1,3 +1,8 @@
+/* Main for BlackJack
+ * Matthew W. Gavin R. Caleb P. Sean C.
+ * 27 April 2021
+ * Controls the flow of the game
+ */
 import java.util.Objects;
 import java.util.Scanner;
 public class Main {
@@ -42,7 +47,7 @@ public class Main {
         String choice;
         String colorChoice = main.getPlayerColor();
         do{
-            money.getMoney(game);
+            //money.getMoney();
             game.bet();
             game.compBet();
             game.game(colorChoice, player, compName);
