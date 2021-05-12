@@ -1,3 +1,9 @@
+/*
+this picks the player the computer will go up against.
+has some unintentional features
+created by caleb
+edited by Gavin
+ */
 import java.util.Random;
 public class CompName {
     private static String computerName;
@@ -5,7 +11,7 @@ public class CompName {
         Random random = new Random();
         int getCompName = random.nextInt(4);
         String[] compNameSt = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
-        this.computerName = compNameSt[getCompName];
+        computerName = compNameSt[getCompName];
     }
     public static String getComputerName() {
         return computerName;
