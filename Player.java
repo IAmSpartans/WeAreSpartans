@@ -1,13 +1,6 @@
-/* Printing players for BlackJack
- * Matthew W. Gavin R. Caleb Sean C.
- * 26 April 2021
- * Where I keep the information about each player
- * where the game is run
- */
 import java.util.Random;
 import java.util.Scanner;
 public class Player {
-
     int playerBet;
     void bet() {
         Scanner input = new Scanner(System.in);
@@ -24,15 +17,13 @@ public class Player {
     int compBetValue;
     void compBet() {
         Random random = new Random();
-        CompName botName = new CompName();
         int get = random.nextInt(3);
         int[] values = {10, 50, 100};
         this.compBetValue = values[get];
-        System.out.println(botName.getComputerName() + " has chosen to bet $" + compBetValue);
+        System.out.println("the computer has chosen to bet $" + compBetValue);
     }
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
-
     //get comp name in main function as a global variable then pass it in
     //this way the compName doesn't get called every time so it is static
     //add arguments to game to get all information
@@ -126,7 +117,7 @@ public class Player {
     }
     int getFromFile(){
         int moneyAmount;
-        moneyAmount = Main.money.getMoney();
+        moneyAmount = Main.money.getMoney(this);
         return moneyAmount;
     }
 }
