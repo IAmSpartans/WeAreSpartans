@@ -3,7 +3,6 @@
  * 27 April 2021
  * Controls the flow of the game
  */
-
 import java.util.Objects;
 import java.util.Scanner;
 public class Main {
@@ -15,7 +14,6 @@ public class Main {
         player = input.next();
         money = new Money(player);
     }
-
     String choice;
     public String getPlayerColor() {
         Scanner scanner = new Scanner(System.in);
@@ -43,7 +41,8 @@ public class Main {
         //things run twice or more when they are not supposed to
         Player game = new Player();
         Main main = new Main();
-        String compName = CompName.getComputerName();
+        CompName botName = new CompName();
+        String compName = botName.getComputerName();
         Scanner scanner = new Scanner(System.in);
         String choice;
         String colorChoice = main.getPlayerColor();
