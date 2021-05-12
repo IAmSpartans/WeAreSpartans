@@ -47,7 +47,7 @@ public class Main {
         String choice;
         String colorChoice = main.getPlayerColor();
         do{
-            money.getMoney();
+            //money.getMoney();
             game.bet();
             game.compBet();
             game.game(colorChoice, player, compName);
