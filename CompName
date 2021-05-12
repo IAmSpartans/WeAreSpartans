@@ -1,12 +1,13 @@
 import java.util.Random;
 public class CompName {
     private static String computerName;
-    CompName(){
+    CompName() {
         Random random = new Random();
         int getCompName = random.nextInt(4);
         String[] compNameSt = {"john", "Tim", "samantha", "Papa-tim", "Bob"};
         this.computerName = compNameSt[getCompName];
     }
-    public static String getComputerName(){
+    public static String getComputerName() {
         return computerName;
     }
+}
