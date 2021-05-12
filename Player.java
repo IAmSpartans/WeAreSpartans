@@ -24,10 +24,11 @@ public class Player {
     int compBetValue;
     void compBet() {
         Random random = new Random();
+        CompName botName = new CompName();
         int get = random.nextInt(3);
         int[] values = {10, 50, 100};
         this.compBetValue = values[get];
-        System.out.println("the computer has chosen to bet $" + compBetValue);
+        System.out.println(botName.getComputerName() + " has chosen to bet $" + compBetValue);
     }
     int compFinalValue = 500;
     int amountOFMoney = getFromFile();
