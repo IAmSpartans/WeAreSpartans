@@ -1,20 +1,11 @@
-/* Money for BlackJack
- * Matthew W. Gavin R. Caleb P. Sean C.
- * 27 April 2021
- * Betting in the game the game
- * this will mak it so it saves money to a file
- */
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-
 public class Money {
     BufferedWriter bw;
     BufferedReader br;
     String fileName;
-
     Money(String player) {
         fileName = player;
         try {
@@ -30,8 +21,8 @@ public class Money {
         } catch (Exception ignored) {
         }
     }
-    public int getMoney () {
-        int retVal = 0;
+    public int getMoney (Player player) {
+        int retVal = player.amountOFMoney;
         try {
             retVal = br.read();
             if (retVal <= 0) {
